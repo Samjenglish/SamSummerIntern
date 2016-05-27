@@ -1,0 +1,21 @@
+#!/bin/bash
+NITEMS=$#
+declare -a numarray
+for ((i=0 ; i < NITEMS ; i++))
+do
+	numarray[i]=$1
+	shift
+done
+for (( j=0; j < NITEMS; j++ ))
+do	
+	for (( k=0 ; k < NITEMS; k++ ))
+	do	
+		if [[ "${numarray[k]}" -gt "${numarray[(( k + 1 ))]}" ]] 
+		then
+			TEMP=${numarray[k]}
+			numarray[k]=${numarray[k+1]}
+			numarray[k+1]=$TEMP
+		fi
+	done
+done
+echo ${numarray[*]}

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $# != 2 ] 
+then
+	echo "usage: gcd x y"
+	exit 1
+fi
+
+if [ $1 -ge $2 ] 
+then
+	HIGH=$1
+	LOW=$2
+else
+	HIGH=$2
+	LOW=$1
+fi
+
+REMAINDER=$LOW
+
+while [ $REMAINDER -ne 0 ]
+do
+	REMAINDER=$(( $HIGH % $LOW ))
+	HIGH=$LOW
+	LOW=$REMAINDER
+done
+
+echo $HIGH

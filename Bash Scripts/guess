@@ -1,0 +1,24 @@
+#!/bin/bash
+
+HIGH=100
+LOW=0
+MID=50
+while [ $(( $HIGH - 1 )) -ne $LOW ] 
+do
+	MID=$(( ($HIGH + $LOW) / 2 ))
+	echo "Is your number >=$MID or <$MID? Enter 'g' or 'l'."
+	read userin
+	if [ $userin == "l" ] 
+	then
+		HIGH=$MID	
+    fi
+	
+	if [ $userin == "g" ] 
+	then
+		LOW=$MID
+	fi
+done
+
+echo "Your number must be $LOW."
+
+
